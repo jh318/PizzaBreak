@@ -6,14 +6,27 @@ public class BallController : MonoBehaviour {
 
 	public float speed = 2.0f;
 
-	// Use this for initialization
+	Rigidbody body;
+
 	void Start () {
-		Rigidbody body = GetComponent<Rigidbody> ();
+		body = GetComponent<Rigidbody> ();
+		Launch ();
+	}
+
+	void Launch () {
+		transform.position = PaddleController.instance.transform.position + Vector3.up;
 		body.velocity = Vector3.up * speed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-			
+		Vector3 view = Camera.main.WorldToViewportPoint (transform.position);
+		if (view.y < 0) { 
+			GameManager.LostBall ();
+			Launch ();
+		}
+
 	}
+
+
 }
