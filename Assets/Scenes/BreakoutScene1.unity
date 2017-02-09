@@ -462,6 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  tilt: 3
 --- !u!4 &187032702
 Transform:
   m_ObjectHideFlags: 0
@@ -3542,7 +3543,7 @@ Prefab:
     - target: {fileID: 114931318943397068, guid: 2558753f756e0264ba72e7fb4bfaf32b,
         type: 2}
       propertyPath: speed
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2558753f756e0264ba72e7fb4bfaf32b, type: 2}
