@@ -9,7 +9,7 @@ public class BallController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Rigidbody body = GetComponent<Rigidbody> ();
-		body.velocity = Vector3.up;
+		body.velocity = Vector3.up * speed;
 	}
 	
 	// Update is called once per frame
