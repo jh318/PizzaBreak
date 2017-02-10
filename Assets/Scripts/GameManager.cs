@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public Text livesText;
 	public Text scoreText;
 	public Text highScoreText;
+	public Text gameOverText;
 
 	public int lives = 3;
 	public int score = 0;
@@ -35,6 +37,10 @@ public class GameManager : MonoBehaviour {
 
 	public static void LostBall(){
 		instance.lives--;
+		if (instance.lives < 0) {
+			instance.gameOverText.text = "You Lose!";
+			instance.gameOverText.gameObject.SetActive (true);
+		}
 		instance.livesText.text = "Lives: " + instance.lives;
 	}
 
