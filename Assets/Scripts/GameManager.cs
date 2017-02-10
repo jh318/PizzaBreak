@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 
 	public int lives = 3;
 	public int score = 0;
+	public int highScore = 30;
 
 	void Awake (){
 		if (instance == null) {
@@ -29,7 +30,9 @@ public class GameManager : MonoBehaviour {
 	void Start (){
 		livesText.text = "Lives: " + lives;
 		scoreText.text = "Scores: " + score;
+		highScoreText.text = "High Score: " + highScore;
 	}
+
 	public static void LostBall(){
 		instance.lives--;
 		instance.livesText.text = "Lives: " + instance.lives;
@@ -38,6 +41,10 @@ public class GameManager : MonoBehaviour {
 	public static void BrickBroken (int points){
 		instance.score += points;
 		instance.scoreText.text = "Score: " + instance.score;
+		if (instance.score > instance.highScore) { //Update High Score
+			instance.highScore = instance.score;
+			instance.highScoreText.text = "High Score: " + instance.highScore;
+		}
 	}
-
+		
 }
