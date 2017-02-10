@@ -40,8 +40,9 @@ public class GameManager : MonoBehaviour {
 		if (instance.lives < 0) {
 			instance.gameOverText.text = "You Lose!";
 			instance.gameOverText.gameObject.SetActive (true);
+		} else {
+			instance.livesText.text = "Lives: " + instance.lives;
 		}
-		instance.livesText.text = "Lives: " + instance.lives;
 	}
 
 	public static void BrickBroken (int points){
