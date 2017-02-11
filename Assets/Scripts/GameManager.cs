@@ -12,10 +12,14 @@ public class GameManager : MonoBehaviour {
 	public Text scoreText;
 	public Text highScoreText;
 	public Text gameOverText;
+	public Text winStateText;
 
 	public int lives = 3;
 	public int score = 0;
 	public int highScore = 30;
+	public int brickCount = 0;
+
+	public List<GameObject> brickList;
 
 	void Awake (){
 		if (instance == null) {
@@ -32,7 +36,8 @@ public class GameManager : MonoBehaviour {
 	void Start (){
 		livesText.text = "Lives: " + lives;
 		scoreText.text = "Scores: " + score;
-		highScoreText.text = "High Score: " + highScore;
+		highScoreText.text = "High Score: " + highScore; 
+		CreateBrickObjectList ();
 	}
 
 	public static void LostBall(){
@@ -52,6 +57,18 @@ public class GameManager : MonoBehaviour {
 			instance.highScore = instance.score;
 			instance.highScoreText.text = "High Score: " + instance.highScore;
 		}
+	}
+
+	public static void AllBricksBroken(){
+		if(instance.brickList.Count <= 0){
+			Debug.Log ("All bricks broken.");
+			instance.winStateText.text = "You Win!";
+			instance.winStateText.gameObject.SetActive (true);
+		}
+	}
+
+	public void CreateBrickObjectList(){
+		brickList = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Brick"));
 	}
 		
 }

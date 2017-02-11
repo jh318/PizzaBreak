@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114910148024421158}
   m_Layer: 0
   m_Name: Brick
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,3 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5377f5430cf8704a9b8b241527a3ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 10
