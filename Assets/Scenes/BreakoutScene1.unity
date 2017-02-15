@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 187032701}
   m_Layer: 0
   m_Name: Paddle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,6 +570,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4206972073064152, guid: 7a921ab6ac5cd8b469a334868fd406b8,
     type: 2}
   m_PrefabInternal: {fileID: 1971206274}
+--- !u!198 &223672925 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1603636739}
 --- !u!1001 &224663031
 Prefab:
   m_ObjectHideFlags: 0
@@ -1201,7 +1206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &446026338
 Transform:
   m_ObjectHideFlags: 0
@@ -3078,6 +3083,58 @@ Transform:
   m_PrefabParentObject: {fileID: 4206972073064152, guid: 7a921ab6ac5cd8b469a334868fd406b8,
     type: 2}
   m_PrefabInternal: {fileID: 1575268397}
+--- !u!1001 &1083700165
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.0853474
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.979143
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305294316532106, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 198890149796227574, guid: 26cdd2be21daf9941b6f0901c5fe43ba,
+        type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198890149796227574, guid: 26cdd2be21daf9941b6f0901c5fe43ba,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1284506247
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 26cdd2be21daf9941b6f0901c5fe43ba, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1098054553
 Prefab:
   m_ObjectHideFlags: 0
@@ -3951,7 +4008,7 @@ GameObject:
   - component: {fileID: 1407356502}
   m_Layer: 0
   m_Name: PaddleBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4323,8 +4380,22 @@ Prefab:
         type: 2}
       propertyPath: hitParticlesPrefab
       value: 
-      objectReference: {fileID: 1022458494722702, guid: 0a90e01c025511f4d92bc70cc90adae7,
+      objectReference: {fileID: 223672925}
+    - target: {fileID: 114931318943397068, guid: 2558753f756e0264ba72e7fb4bfaf32b,
         type: 2}
+      propertyPath: paddleParticlesPrefab
+      value: 
+      objectReference: {fileID: 1881879968}
+    - target: {fileID: 114931318943397068, guid: 2558753f756e0264ba72e7fb4bfaf32b,
+        type: 2}
+      propertyPath: hitParticles
+      value: 
+      objectReference: {fileID: 223672925}
+    - target: {fileID: 114931318943397068, guid: 2558753f756e0264ba72e7fb4bfaf32b,
+        type: 2}
+      propertyPath: paddleParticles
+      value: 
+      objectReference: {fileID: 1881879968}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2558753f756e0264ba72e7fb4bfaf32b, type: 2}
   m_IsPrefabParent: 0
@@ -5322,6 +5393,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a921ab6ac5cd8b469a334868fd406b8, type: 2}
   m_IsPrefabParent: 0
+--- !u!198 &1881879968 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198890149796227574, guid: 26cdd2be21daf9941b6f0901c5fe43ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 1083700165}
 --- !u!4 &1888689227 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4206972073064152, guid: 7a921ab6ac5cd8b469a334868fd406b8,
@@ -5616,7 +5692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2118842207
 Transform:
   m_ObjectHideFlags: 0

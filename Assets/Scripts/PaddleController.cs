@@ -23,4 +23,5 @@ public class PaddleController : MonoBehaviour {
 		v.x = Mathf.Clamp01 (v.x);
 		transform.position = Camera.main.ViewportToWorldPoint (v);
 	}
+		
 }
