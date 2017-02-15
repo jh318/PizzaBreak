@@ -10,9 +10,11 @@ public class BallController : MonoBehaviour {
 	public float speed = 2.0f;
 
 	Rigidbody body;
+	AudioSource sound;
 
 	void Start () {
 		body = GetComponent<Rigidbody> ();
+		sound = GetComponent<AudioSource> ();
 		PreLaunch ();
 	}
 
@@ -75,6 +77,8 @@ public class BallController : MonoBehaviour {
 		p.transform.position = transform.position;
 		p.transform.up = body.velocity;
 		p.Play ();
+
+		sound.Play ();
 
 		//Bad Way of doing it?!?!?
 		/*ParticleSystem hitParticles = Instantiate (hitParticlesPrefab) as ParticleSystem;

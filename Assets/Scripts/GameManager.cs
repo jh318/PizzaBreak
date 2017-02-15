@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 
+	public BrickController brickPrefab;
+	public int rows = 5;
+	public int columns = 10;
+
 	public Text livesText;
 	public Text scoreText;
 	public Text highScoreText;
@@ -38,6 +42,16 @@ public class GameManager : MonoBehaviour {
 		scoreText.text = "Scores: " + score;
 		highScoreText.text = "High Score: " + highScore; 
 		CreateBrickObjectList ();
+		CreateBricks ();
+	}
+
+	void CreateBricks(){
+		for (int row = 0; rows < rows; rows++) {
+			for(int col = 0; col < columns; col++){
+				BrickController brick = Instantiate (brickPrefab) as BrickController;
+				brick.transform.position = new Vector3 (columns,rows,0); //Need to fix. Bricks not spawning.
+			}
+		}
 	}
 
 	public static void LostBall(){
