@@ -22,7 +22,7 @@ public class BrickController : MonoBehaviour {
 	void OnCollisionExit(Collision collision){
 		gameObject.SetActive (false);
 		GameManager.BrickBroken (points);
-		GameManager.instance.brickList.Remove(gameObject);
+		GameManager.instance.brickList2.Remove(gameObject);
 		GameManager.AllBricksBroken();
 	}
 }

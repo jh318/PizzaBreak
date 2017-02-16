@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour {
 
-	public ParticleSystem hitParticles;
+	public ParticleSystem hitParticlesPrefab;
 	public ParticleSystem paddleParticles;
+	List<ParticleSystem> particlePool = new List<ParticleSystem> ();
 
 	public float speed = 2.0f;
 
@@ -65,18 +66,25 @@ public class BallController : MonoBehaviour {
 		ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController> ();
 		shake.Shake ();
 
-		ParticleSystem p;
+		ParticleSystem hitParticles = null;
 
-		if (c.gameObject.tag == "Player") {
-			p = paddleParticles;
-		} else {
-			p = hitParticles;
+		for (int i = 0; i < particlePool.Count; i++) {
+			ParticleSystem p = particlePool [i];
+			if (p.isStopped) {
+				hitParticles = p;
+				Debug.Log ("reusing from my pool");
+				break;
+			}
 		}
 
-		p.Stop ();
-		p.transform.position = transform.position;
-		p.transform.up = body.velocity;
-		p.Play ();
+		if (hitParticles == null) {
+			hitParticles = Instantiate(hitParticlesPrefab) as ParticleSystem;
+			particlePool.Add (hitParticles);
+		}
+
+
+
+
 
 		sound.Play ();
 
@@ -87,6 +95,4 @@ public class BallController : MonoBehaviour {
 		ParticleSystem particles = hitParticles.GetComponent<ParticleSystem> ();
 		hitParticles.Play ();*/
 	}
-
-
 }

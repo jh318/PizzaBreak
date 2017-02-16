@@ -537,8 +537,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 114910148024421158, guid: 7a921ab6ac5cd8b469a334868fd406b8,
     type: 2}
-  rows: 2
+  rows: 5
   columns: 5
+  edgePadding: 0.7
+  bottomPadding: 0.23
   livesText: {fileID: 554483451}
   scoreText: {fileID: 1144800017}
   highScoreText: {fileID: 1349546432}

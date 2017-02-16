@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	public int columns = 10;
 	[Range(0,1)] public float edgePadding = 0.1f;
 	[Range(0,1)] public float bottomPadding = 0.4f;
-	BrickController[] brickArray;
+	List<BrickController> brickList = new List<BrickController> ();
 
 	public Text livesText;
 	public Text scoreText;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 	public int highScore = 30;
 	public int brickCount = 0;
 
-	public List<GameObject> brickList;
+	public List<GameObject> brickList2;
 
 	void Awake (){
 		if (instance == null) {
@@ -55,12 +55,11 @@ public class GameManager : MonoBehaviour {
 		float w = (topRight.x - bottomLeft.x) / (float) columns;
 		float h = (topRight.y - bottomLeft.y) / (float)rows;
 
-		brickArray = new BrickController[rows * columns];
 		for (int row = 0; row < rows; row++) {
 			for(int col = 0; col < columns; col++){
 				BrickController brick = Instantiate (brickPrefab) as BrickController;
 				brick.transform.position = bottomLeft + new Vector3 ((row + 0.5f) * (w+  0.5f), (col + 0.5f) * (h + 0.5f),0);
-				brickArray[col + (row * columns)] = brick;
+				brickList.Add(brick);
 			}
 		}
 	}
@@ -85,15 +84,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void AllBricksBroken(){
-		/*if(instance.brickList.Count <= 0){
+		/*if(instance.brickList2.Count <= 0){
 			Debug.Log ("All bricks broken.");
 			instance.winStateText.text = "You Win!";
 			instance.winStateText.gameObject.SetActive (true);
 		}*/
 
 		bool hasWon = true;
-		for (int i = 0; i < instance.brickArray.Length; i++) {
-			BrickController brick = instance.brickArray [i];
+		for (int i = 0; i < instance.brickList.Count; i++) {
+			BrickController brick = instance.brickList [i];
 			if (brick.gameObject.activeSelf) {
 				hasWon = false;
 				break;
@@ -106,7 +105,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void CreateBrickObjectList(){
-		brickList = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Brick"));
+		brickList2 = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Brick"));
 	}
 		
 }
