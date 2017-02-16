@@ -248,11 +248,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &223672925 stripped
-ParticleSystem:
-  m_PrefabParentObject: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1603636739}
 --- !u!1 &505923235
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +545,7 @@ MonoBehaviour:
   score: 0
   highScore: 30
   brickCount: 0
-  brickList: []
+  brickList2: []
 --- !u!4 &748809840
 Transform:
   m_ObjectHideFlags: 0
@@ -1212,7 +1207,8 @@ Prefab:
         type: 2}
       propertyPath: hitParticlesPrefab
       value: 
-      objectReference: {fileID: 223672925}
+      objectReference: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
+        type: 2}
     - target: {fileID: 114931318943397068, guid: 2558753f756e0264ba72e7fb4bfaf32b,
         type: 2}
       propertyPath: paddleParticlesPrefab
@@ -1222,12 +1218,14 @@ Prefab:
         type: 2}
       propertyPath: hitParticles
       value: 
-      objectReference: {fileID: 223672925}
+      objectReference: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
+        type: 2}
     - target: {fileID: 114931318943397068, guid: 2558753f756e0264ba72e7fb4bfaf32b,
         type: 2}
       propertyPath: paddleParticles
       value: 
-      objectReference: {fileID: 1881879968}
+      objectReference: {fileID: 198890149796227574, guid: 26cdd2be21daf9941b6f0901c5fe43ba,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2558753f756e0264ba72e7fb4bfaf32b, type: 2}
   m_IsPrefabParent: 0
