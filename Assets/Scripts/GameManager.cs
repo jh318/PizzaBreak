@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
 	public BrickController brickPrefab;
 	public int rows = 5;
 	public int columns = 10;
+	[Range(0,1)] public float edgePadding = 0.1f;
+	[Range(0,1)] public float bottomPadding = 0.4f;
+	BrickController[] brickArray;
 
 	public Text livesText;
 	public Text scoreText;
@@ -46,10 +49,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void CreateBricks(){
-		for (int row = 0; rows < rows; rows++) {
+		Vector3 bottomLeft = Camera.main.ViewportToWorldPoint (new Vector3 (edgePadding, bottomPadding, 0));
+		Vector3 topRight = Camera.main.ViewportToWorldPoint (new Vector3 (1 - edgePadding, 1 - bottomPadding, 0));
+		bottomLeft.z = 0;
+		float w = (topRight.x - bottomLeft.x) / (float) columns;
+		float h = (topRight.y - bottomLeft.y) / (float)rows;
+
+		brickArray = new BrickController[rows * columns];
+		for (int row = 0; row < rows; row++) {
 			for(int col = 0; col < columns; col++){
 				BrickController brick = Instantiate (brickPrefab) as BrickController;
-				brick.transform.position = new Vector3 (columns,rows,0); //Need to fix. Bricks not spawning.
+				brick.transform.position = bottomLeft + new Vector3 ((row + 0.5f) * (w+  0.5f), (col + 0.5f) * (h + 0.5f),0);
+				brickArray[col + (row * columns)] = brick;
 			}
 		}
 	}
@@ -74,8 +85,21 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void AllBricksBroken(){
-		if(instance.brickList.Count <= 0){
+		/*if(instance.brickList.Count <= 0){
 			Debug.Log ("All bricks broken.");
+			instance.winStateText.text = "You Win!";
+			instance.winStateText.gameObject.SetActive (true);
+		}*/
+
+		bool hasWon = true;
+		for (int i = 0; i < instance.brickArray.Length; i++) {
+			BrickController brick = instance.brickArray [i];
+			if (brick.gameObject.activeSelf) {
+				hasWon = false;
+				break;
+			}
+		}
+		if (hasWon) {
 			instance.winStateText.text = "You Win!";
 			instance.winStateText.gameObject.SetActive (true);
 		}
