@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour {
-
 	public static GameManager instance;
 
 	public BrickController brickPrefab;
@@ -26,8 +25,6 @@ public class GameManager : MonoBehaviour {
 	public int highScore = 30;
 	public int brickCount = 0;
 
-	public List<GameObject> brickList2;
-
 	void Awake (){
 		if (instance == null) {
 			instance = this;
@@ -41,16 +38,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start (){
-		livesText.text = "Lives: " + lives;
-		scoreText.text = "Scores: " + score;
-		highScoreText.text = "High Score: " + highScore; 
-		CreateBrickObjectList ();
+		TallyScoreAndDisplay ();
 		CreateBricks ();
 	}
 
 	void CreateBricks(){
 		Vector3 bottomLeft = Camera.main.ViewportToWorldPoint (new Vector3 (edgePadding, bottomPadding, 0));
-		Vector3 topRight = Camera.main.ViewportToWorldPoint (new Vector3 (1 - edgePadding, 1 - bottomPadding, 0));
+		Vector3 topRight = Camera.main.ViewportToWorldPoint (new Vector3 (1 - edgePadding, 1 - edgePadding, 0));
 		bottomLeft.z = 0;
 		float w = (topRight.x - bottomLeft.x) / (float) columns;
 		float h = (topRight.y - bottomLeft.y) / (float)rows;
@@ -84,12 +78,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void AllBricksBroken(){
-		/*if(instance.brickList2.Count <= 0){
-			Debug.Log ("All bricks broken.");
-			instance.winStateText.text = "You Win!";
-			instance.winStateText.gameObject.SetActive (true);
-		}*/
-
 		bool hasWon = true;
 		for (int i = 0; i < instance.brickList.Count; i++) {
 			BrickController brick = instance.brickList [i];
@@ -104,8 +92,9 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void CreateBrickObjectList(){
-		brickList2 = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Brick"));
+	void TallyScoreAndDisplay(){
+		livesText.text = "Lives: " + lives;
+		scoreText.text = "Scores: " + score;
+		highScoreText.text = "High Score: " + highScore; 
 	}
-		
 }

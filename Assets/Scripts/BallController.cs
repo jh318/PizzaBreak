@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallController : MonoBehaviour {
-
+	public float speed = 2.0f;
 	public ParticleSystem hitParticlesPrefab;
 	public ParticleSystem paddleParticles;
 	List<ParticleSystem> particlePool = new List<ParticleSystem> ();
-
-	public float speed = 2.0f;
 
 	Rigidbody body;
 	AudioSource sound;
@@ -30,25 +28,25 @@ public class BallController : MonoBehaviour {
 		body.velocity = Vector3.up * speed;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(transform.parent == null){
-		Vector3 v = body.velocity;
-		if (Mathf.Abs (v.x) > 2 * Mathf.Abs (v.y)) {
-			v.x *= 0.9f;
-		}
-		v = v.normalized * speed;
-		body.velocity = v;
-		DeathCheck ();
+			Vector3 v = body.velocity;
+			if (Mathf.Abs (v.x) > Mathf.Abs (v.y)) {
+				v.x *= 0.9f;
+			}
+			v = v.normalized * speed;
+			body.velocity = v;
+			transform.up = v; //procedural ball thing
+			transform.localScale = new Vector3(0.9f,1.1f,1f);
+			DeathCheck ();
 		}
 		else{
+			transform.localScale = Vector3.one;
 			if (Input.GetButton("Jump")){
 				Launch ();
 			}
 		}
 	}
-		
-
 		void DeathCheck(){
 		Vector3 view = Camera.main.WorldToViewportPoint (transform.position);
 		if (view.y < 0) { 
@@ -65,9 +63,7 @@ public class BallController : MonoBehaviour {
 	void OnCollisionEnter(Collision c){
 		ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController> ();
 		shake.Shake ();
-
 		ParticleSystem hitParticles = null;
-
 		for (int i = 0; i < particlePool.Count; i++) {
 			ParticleSystem p = particlePool [i];
 			if (p.isStopped) {
@@ -76,23 +72,12 @@ public class BallController : MonoBehaviour {
 				break;
 			}
 		}
-
 		if (hitParticles == null) {
 			hitParticles = Instantiate(hitParticlesPrefab) as ParticleSystem;
 			particlePool.Add (hitParticles);
 		}
-
-
-
-
-
+		sound.pitch = Random.Range (0.9f, 1.1f);
+		sound.volume = Random.Range (0.8f, 1f);
 		sound.Play ();
-
-		//Bad Way of doing it?!?!?
-		/*ParticleSystem hitParticles = Instantiate (hitParticlesPrefab) as ParticleSystem;
-		hitParticles.transform.position = transform.position;
-		hitParticles.transform.up = body.velocity;
-		ParticleSystem particles = hitParticles.GetComponent<ParticleSystem> ();
-		hitParticles.Play ();*/
 	}
 }
