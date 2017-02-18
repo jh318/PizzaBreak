@@ -114,8 +114,8 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		if (hasWon) {
-			instance.winStateText.text = "You Win!";
-			instance.winStateText.gameObject.SetActive (true);
+			instance.gameOverText.text = "You Win!";
+			instance.gameOverText.gameObject.SetActive (true);
 			instance.sound.clip = instance.winSfx;
 			instance.sound.Play ();
 		}

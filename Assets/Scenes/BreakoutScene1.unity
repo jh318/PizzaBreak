@@ -557,7 +557,6 @@ RectTransform:
   - {fileID: 1144800016}
   - {fileID: 1349546431}
   - {fileID: 777532340}
-  - {fileID: 934894165}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -600,15 +599,15 @@ MonoBehaviour:
   powerUp: {fileID: 1435628238893996, guid: ec263dbdd3787064e94a56494f3c652e, type: 2}
   lifeParticle: {fileID: 1984103755}
   scoreParticle: {fileID: 1915547258}
-  rows: 5
-  columns: 15
+  rows: 20
+  columns: 20
   edgePadding: 0.1
   bottomPadding: 0.4
   livesText: {fileID: 554483451}
   scoreText: {fileID: 1144800017}
   highScoreText: {fileID: 1349546432}
   gameOverText: {fileID: 777532342}
-  winStateText: {fileID: 934894167}
+  winStateText: {fileID: 0}
   lives: 1
   score: 0
   highScore: 30
@@ -996,95 +995,6 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 198890149796227574, guid: 26cdd2be21daf9941b6f0901c5fe43ba,
     type: 2}
   m_PrefabInternal: {fileID: 1083700165}
---- !u!1 &934894164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 934894165}
-  - component: {fileID: 934894168}
-  - component: {fileID: 934894167}
-  - component: {fileID: 934894166}
-  m_Layer: 5
-  m_Name: WinStateText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &934894165
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934894164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 557531820}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.25366187}
-  m_AnchorMax: {x: 1, y: 0.75216913}
-  m_AnchoredPosition: {x: -333, y: -1.9999847}
-  m_SizeDelta: {x: 666, y: 4}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &934894166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934894164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 1, b: 0.25517225, a: 0.5}
-  m_EffectDistance: {x: 3, y: 3}
-  m_UseGraphicAlpha: 1
---- !u!114 &934894167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934894164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 3145aa3e3f4f4534fbd63aad4ec991f9, type: 3}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 161
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: You Win!
---- !u!222 &934894168
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 934894164}
 --- !u!1001 &1083700165
 Prefab:
   m_ObjectHideFlags: 0
