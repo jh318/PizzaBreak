@@ -859,9 +859,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114802579520519066, guid: 2558753f756e0264ba72e7fb4bfaf32b,
+        type: 2}
+      propertyPath: hitParticlesPrefab
+      value: 
+      objectReference: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
+        type: 2}
+    - target: {fileID: 114802579520519066, guid: 2558753f756e0264ba72e7fb4bfaf32b,
+        type: 2}
+      propertyPath: paddleParticles
+      value: 
+      objectReference: {fileID: 923860887}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2558753f756e0264ba72e7fb4bfaf32b, type: 2}
   m_IsPrefabParent: 0
+--- !u!198 &923860887 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198890149796227574, guid: 26cdd2be21daf9941b6f0901c5fe43ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 1083700165}
 --- !u!1 &934894164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1359,12 @@ Prefab:
     - target: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
         type: 2}
       propertyPath: randomSeed
-      value: 1049302349
+      value: 1530098312
+      objectReference: {fileID: 0}
+    - target: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
+        type: 2}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a90e01c025511f4d92bc70cc90adae7, type: 2}

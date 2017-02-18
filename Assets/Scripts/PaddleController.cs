@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PaddleController : MonoBehaviour {
+
 	public static PaddleController instance;
 	public float speed = 2.0f;
 	public float tilt = 3;

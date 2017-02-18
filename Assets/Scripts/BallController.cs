@@ -61,10 +61,15 @@ public class BallController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision c){
-		ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController> ();
-		shake.Shake ();
+		CameraShake ();
+		CollisionParticlePlayer (c);
+		SoundPlayer ();
+
+	}
+
+	void CollisionParticlePlayer(Collision c){
 		ParticleSystem hitParticles = null;
-		for (int i = 0; i < particlePool.Count; i++) {
+		for (int i = 0; i < particlePool.Count; i++) { //Particle Pool
 			ParticleSystem p = particlePool [i];
 			if (p.isStopped) {
 				hitParticles = p;
@@ -76,8 +81,28 @@ public class BallController : MonoBehaviour {
 			hitParticles = Instantiate(hitParticlesPrefab) as ParticleSystem;
 			particlePool.Add (hitParticles);
 		}
+		if (c.transform.parent.gameObject == PaddleController.instance.gameObject) { //Collision with paddle
+			paddleParticles.transform.position = transform.position;
+			paddleParticles.Play ();
+			Debug.Log ("Hit the paddle");
+		} 
+		else {
+			hitParticles.transform.position = transform.position;
+			hitParticles.transform.up = body.velocity;
+			hitParticles.Play ();
+		}
+	}
+
+	void CameraShake(){
+		ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController> ();
+		shake.Shake ();
+	}
+
+	void SoundPlayer(){
 		sound.pitch = Random.Range (0.9f, 1.1f);
 		sound.volume = Random.Range (0.8f, 1f);
 		sound.Play ();
 	}
 }
+
+	
