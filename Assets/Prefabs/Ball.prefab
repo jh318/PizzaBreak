@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 82960792302644962}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!82 &82960792302644962
 AudioSource:
@@ -136,7 +136,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: abb56cb51e234784abfdb42d85c8ecf3, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -194,7 +194,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -218,11 +218,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f81ffe03fc92c43a990f5dfdf328e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   hitParticlesPrefab: {fileID: 198879964501881666, guid: 0a90e01c025511f4d92bc70cc90adae7,
     type: 2}
-  paddleParticles: {fileID: 198890149796227574, guid: 26cdd2be21daf9941b6f0901c5fe43ba,
-    type: 2}
-  speed: 5
+  paddleParticles: {fileID: 0}
+  sound: {fileID: 82960792302644962}
+  paddleHitSfx: {fileID: 8300000, guid: 3c4d5145485b7134a99a48a83b5d5830, type: 3}
+  brickHitSfx: {fileID: 8300000, guid: afc3b1dc4ac83ba4dbf971dc91cd907e, type: 3}
+  wallHitSfx: {fileID: 8300000, guid: e259704548769ec4bb873534f463f622, type: 3}
 --- !u!136 &136469039766214524
 CapsuleCollider:
   m_ObjectHideFlags: 1

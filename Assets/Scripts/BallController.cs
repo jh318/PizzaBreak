@@ -10,11 +10,14 @@ public class BallController : MonoBehaviour {
 	List<ParticleSystem> particlePool = new List<ParticleSystem> ();
 
 	Rigidbody body;
-	AudioSource sound;
+	public AudioSource sound;
+	public AudioClip paddleHitSfx;
+	public AudioClip brickHitSfx;
+	public AudioClip wallHitSfx;
 
 	void Start () {
-		body = GetComponent<Rigidbody> ();
 		sound = GetComponent<AudioSource> ();
+		body = GetComponent<Rigidbody> ();
 		PreLaunch ();
 	}
 
@@ -70,15 +73,28 @@ public class BallController : MonoBehaviour {
 			hitParticles = Instantiate(hitParticlesPrefab) as ParticleSystem;
 			particlePool.Add (hitParticles);
 		}
-		if (c.transform.parent != null && c.transform.parent.gameObject == PaddleController.instance.gameObject) { //Collision with paddle
+		if (c.gameObject.tag == "Player") { //Collision with paddle
 			paddleParticles.transform.position = transform.position;
 			paddleParticles.Play ();
 			Debug.Log ("Hit the paddle");
+			sound.clip = paddleHitSfx;
+			sound.Play();
 		} 
+		else if(c.gameObject.tag == "Brick"){
+			hitParticles.transform.position = transform.position;
+			hitParticles.transform.up = body.velocity;
+			hitParticles.Play ();
+			Debug.Log ("Hit a brick");
+			sound.clip = brickHitSfx;
+			sound.Play();
+		}
 		else {
 			hitParticles.transform.position = transform.position;
 			hitParticles.transform.up = body.velocity;
 			hitParticles.Play ();
+			Debug.Log ("Hit the wall");
+			sound.clip = wallHitSfx;
+			sound.Play();
 		}
 	}
 

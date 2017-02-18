@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23925895118092900}
   m_Layer: 0
   m_Name: BrickBody
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9105171bc9becfc4390142c4ca6fb1e3, type: 2}
+  - {fileID: 2100000, guid: 042aaa291b66ae046b364616bb5e3a54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

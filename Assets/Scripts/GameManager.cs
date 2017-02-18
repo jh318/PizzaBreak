@@ -5,10 +5,15 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour {
+
 	public static GameManager instance;
 
 	public BrickController brickPrefab;
 	public GameObject powerUp;
+	public ParticleSystem lifeParticle;
+	public ParticleSystem scoreParticle;
+
+
 	public int rows = 5;
 	public int columns = 10;
 	[Range(0,1)] public float edgePadding = 0.1f;
@@ -26,6 +31,12 @@ public class GameManager : MonoBehaviour {
 	public int highScore = 30;
 	public int brickCount = 0;
 
+	public AudioSource sound;
+	public AudioClip winSfx;
+	public AudioClip loseSfx;
+	public AudioClip lifeLostSfx;
+	//public AudioClip gameMusic;
+
 	void Awake (){
 		if (instance == null) {
 			instance = this;
@@ -41,19 +52,20 @@ public class GameManager : MonoBehaviour {
 	void Start (){
 		TallyScoreAndDisplay ();
 		CreateBricks ();
+		sound = GetComponent<AudioSource>();
 	}
 
 	void CreateBricks(){
 		Vector3 bottomLeft = Camera.main.ViewportToWorldPoint (new Vector3 (edgePadding, bottomPadding, 0));
 		Vector3 topRight = Camera.main.ViewportToWorldPoint (new Vector3 (1 - edgePadding, 1 - edgePadding, 0));
 		bottomLeft.z = 0;
-		float w = (topRight.x - bottomLeft.x) / (float) columns;
+		float w = (topRight.x - bottomLeft.x) / (float)columns;
 		float h = (topRight.y - bottomLeft.y) / (float)rows;
 
 		for (int row = 0; row < rows; row++) {
 			for(int col = 0; col < columns; col++){
 				BrickController brick = Instantiate (brickPrefab) as BrickController;
-				brick.transform.position = bottomLeft + new Vector3 ((row + 0.5f) * (w+  0.5f), (col + 0.5f) * (h + 0.5f),0);
+				brick.transform.position = bottomLeft + new Vector3 ((col + 0.5f) * w, (row + 0.5f) * h,0);
 				brickList.Add(brick);
 			}
 		}
@@ -64,13 +76,21 @@ public class GameManager : MonoBehaviour {
 		if (instance.lives < 0) {
 			instance.gameOverText.text = "You Lose!";
 			instance.gameOverText.gameObject.SetActive (true);
+			instance.sound.clip = instance.loseSfx;
+			instance.sound.Play ();
 		} else {
+			instance.sound.clip = instance.lifeLostSfx;
+			instance.sound.Play ();
 			instance.livesText.text = "Lives: " + instance.lives;
+			ParticleSystem death = instance.lifeParticle;
+			death.Play();
 		}
 	}
 
 	public static void BrickBroken (int points){
 		instance.score += points;
+		ParticleSystem p = instance.scoreParticle;
+		p.Play ();
 		instance.scoreText.text = "Score: " + instance.score;
 		if (instance.score > instance.highScore) { //Update High Score
 			instance.highScore = instance.score;
@@ -80,9 +100,11 @@ public class GameManager : MonoBehaviour {
 			instance.DropPowerUp ();
 		}
 
+		AllBricksBroken ();
+
 	}
 
-	public static void AllBricksBroken(){
+	public static void AllBricksBroken() {
 		bool hasWon = true;
 		for (int i = 0; i < instance.brickList.Count; i++) {
 			BrickController brick = instance.brickList [i];
@@ -94,6 +116,8 @@ public class GameManager : MonoBehaviour {
 		if (hasWon) {
 			instance.winStateText.text = "You Win!";
 			instance.winStateText.gameObject.SetActive (true);
+			instance.sound.clip = instance.winSfx;
+			instance.sound.Play ();
 		}
 	}
 
