@@ -33,5 +33,12 @@ public class PaddleController : MonoBehaviour {
 		v.x = Mathf.Clamp01 (v.x);
 		transform.position = Camera.main.ViewportToWorldPoint (v) - Vector3.right * xOffset;
 	}
+
+	void OnTriggerEnter(Collider c){
+		if (c.transform.parent.gameObject.tag == "PowerUp") {
+			Debug.Log("You Powered up!!!!!!!!!!!!!!!!!!");
+		}
+			
+	}
 		
 }

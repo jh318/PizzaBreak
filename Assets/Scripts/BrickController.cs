@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BrickController : MonoBehaviour {
+
 	public int points = 10;
 
 	void OnCollisionExit(Collision collision){

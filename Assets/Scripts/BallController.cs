@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallController : MonoBehaviour {
+
 	public float speed = 2.0f;
 	public ParticleSystem hitParticlesPrefab;
 	public ParticleSystem paddleParticles;
@@ -47,19 +48,7 @@ public class BallController : MonoBehaviour {
 			}
 		}
 	}
-		void DeathCheck(){
-		Vector3 view = Camera.main.WorldToViewportPoint (transform.position);
-		if (view.y < 0) { 
-			GameManager.LostBall ();
-			if (GameManager.instance.lives >= 0) {
-				PreLaunch ();
-			} else {
-				gameObject.SetActive (false);
-			}
-			PreLaunch ();
-		}
-	}
-
+		
 	void OnCollisionEnter(Collision c){
 		CameraShake ();
 		CollisionParticlePlayer (c);
@@ -81,7 +70,7 @@ public class BallController : MonoBehaviour {
 			hitParticles = Instantiate(hitParticlesPrefab) as ParticleSystem;
 			particlePool.Add (hitParticles);
 		}
-		if (c.transform.parent.gameObject == PaddleController.instance.gameObject) { //Collision with paddle
+		if (c.transform.parent != null && c.transform.parent.gameObject == PaddleController.instance.gameObject) { //Collision with paddle
 			paddleParticles.transform.position = transform.position;
 			paddleParticles.Play ();
 			Debug.Log ("Hit the paddle");
@@ -90,6 +79,19 @@ public class BallController : MonoBehaviour {
 			hitParticles.transform.position = transform.position;
 			hitParticles.transform.up = body.velocity;
 			hitParticles.Play ();
+		}
+	}
+
+	void DeathCheck(){
+		Vector3 view = Camera.main.WorldToViewportPoint (transform.position);
+		if (view.y < 0) { 
+			GameManager.LostBall ();
+			if (GameManager.instance.lives >= 0) {
+				PreLaunch ();
+			} else {
+				gameObject.SetActive (false);
+			}
+			PreLaunch ();
 		}
 	}
 

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 
 	public BrickController brickPrefab;
+	public GameObject powerUp;
 	public int rows = 5;
 	public int columns = 10;
 	[Range(0,1)] public float edgePadding = 0.1f;
@@ -75,6 +76,10 @@ public class GameManager : MonoBehaviour {
 			instance.highScore = instance.score;
 			instance.highScoreText.text = "High Score: " + instance.highScore;
 		}
+		if (Random.value < 0.5) {
+			instance.DropPowerUp ();
+		}
+
 	}
 
 	public static void AllBricksBroken(){
@@ -96,5 +101,10 @@ public class GameManager : MonoBehaviour {
 		livesText.text = "Lives: " + lives;
 		scoreText.text = "Scores: " + score;
 		highScoreText.text = "High Score: " + highScore; 
+	}
+
+	void DropPowerUp(){
+		GameObject powerP = Instantiate (powerUp);
+		powerP.transform.position = GameObject.FindGameObjectWithTag ("Ball").transform.position;
 	}
 }
