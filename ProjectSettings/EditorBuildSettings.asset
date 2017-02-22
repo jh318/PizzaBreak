@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/BreakoutMainMenu.unity
   - enabled: 1
     path: Assets/Scenes/BreakoutScene1.unity
+  - enabled: 1
+    path: Assets/Scenes/BreakoutScene2.unity

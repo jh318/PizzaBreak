@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour {
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	public ParticleSystem lifeParticle;
 	public ParticleSystem scoreParticle;
 	public GameObject[] powerUpList;
+	public string nextLevel;
+
 
 
 	public int rows = 5;
@@ -38,6 +41,9 @@ public class GameManager : MonoBehaviour {
 	public AudioClip lifeLostSfx;
 	//public AudioClip gameMusic;
 
+	private bool playerWins = false;
+	private bool playerLost = false;
+
 	void Awake (){
 		if (instance == null) {
 			instance = this;
@@ -54,6 +60,15 @@ public class GameManager : MonoBehaviour {
 		TallyScoreAndDisplay ();
 		CreateBricks ();
 		sound = GetComponent<AudioSource>();
+	}
+
+	void Update(){
+		if (playerWins == true) {
+			if (Input.GetKeyDown (KeyCode.Space)) {SceneManager.LoadScene (nextLevel);}
+		}
+		if (playerLost == true) {
+			if (Input.GetKeyDown (KeyCode.Space)) {SceneManager.LoadScene ("BreakoutMainMenu");}
+		}
 	}
 
 	void CreateBricks(){
@@ -77,6 +92,7 @@ public class GameManager : MonoBehaviour {
 		if (instance.lives < 0) {
 			instance.gameOverText.text = "You Lose!";
 			instance.gameOverText.gameObject.SetActive (true);
+			instance.playerLost = true;
 			instance.sound.clip = instance.loseSfx;
 			instance.sound.Play ();
 		} else {
@@ -117,6 +133,7 @@ public class GameManager : MonoBehaviour {
 		if (hasWon) {
 			instance.gameOverText.text = "You Win!";
 			instance.gameOverText.gameObject.SetActive (true);
+			instance.playerWins = true;
 			instance.sound.clip = instance.winSfx;
 			instance.sound.Play ();
 		}

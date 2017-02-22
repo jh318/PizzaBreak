@@ -603,8 +603,8 @@ MonoBehaviour:
   - {fileID: 1435628238893996, guid: ec263dbdd3787064e94a56494f3c652e, type: 2}
   - {fileID: 1993548619409002, guid: 0a7c9afb06690944ba84f01d242e3a26, type: 2}
   - {fileID: 1564203164833592, guid: c981aa253210f4547ae35fd7e0acfc5e, type: 2}
-  nextLevel: BreakoutScene2
-  rows: 1
+  nextLevel: BreakoutMainMenu
+  rows: 2
   columns: 1
   edgePadding: 0.1
   bottomPadding: 0.4
@@ -891,7 +891,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 777532339}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -932,7 +932,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: BreakoutScene2
+          m_StringArgument: BreakoutMainMenu
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
