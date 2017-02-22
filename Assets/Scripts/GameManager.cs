@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void DropPowerUp(){
-		GameObject powerP = Instantiate (powerUpList[Random.Range(0,2)]);
+		GameObject powerP = Instantiate (powerUpList[Random.Range(0,3)]);
 		powerP.transform.position = GameObject.FindGameObjectWithTag ("Ball").transform.position;
 	}
 }

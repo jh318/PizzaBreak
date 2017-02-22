@@ -601,7 +601,7 @@ MonoBehaviour:
   scoreParticle: {fileID: 1915547258}
   powerUpList:
   - {fileID: 1435628238893996, guid: ec263dbdd3787064e94a56494f3c652e, type: 2}
-  - {fileID: 1564203164833592, guid: c981aa253210f4547ae35fd7e0acfc5e, type: 2}
+  - {fileID: 1993548619409002, guid: 0a7c9afb06690944ba84f01d242e3a26, type: 2}
   - {fileID: 1564203164833592, guid: c981aa253210f4547ae35fd7e0acfc5e, type: 2}
   rows: 20
   columns: 20
