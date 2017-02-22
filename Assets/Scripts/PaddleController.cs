@@ -36,6 +36,9 @@ public class PaddleController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider c){
 		if (c.transform.parent.gameObject.tag == "PowerUp") {
+			if (c.transform.parent.gameObject.name == "PowerUpSpeedBall") {
+				Debug.Log ("SPEEEEEEED");
+			}
 			Debug.Log("You Powered up!!!!!!!!!!!!!!!!!!");
 		}
 			

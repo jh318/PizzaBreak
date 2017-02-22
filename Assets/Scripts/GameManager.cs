@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject powerUp;
 	public ParticleSystem lifeParticle;
 	public ParticleSystem scoreParticle;
+	public GameObject[] powerUpList;
 
 
 	public int rows = 5;
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void DropPowerUp(){
-		GameObject powerP = Instantiate (powerUp);
+		GameObject powerP = Instantiate (powerUpList[Random.Range(0,2)]);
 		powerP.transform.position = GameObject.FindGameObjectWithTag ("Ball").transform.position;
 	}
 }

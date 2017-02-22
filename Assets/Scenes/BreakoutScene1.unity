@@ -599,6 +599,10 @@ MonoBehaviour:
   powerUp: {fileID: 1435628238893996, guid: ec263dbdd3787064e94a56494f3c652e, type: 2}
   lifeParticle: {fileID: 1984103755}
   scoreParticle: {fileID: 1915547258}
+  powerUpList:
+  - {fileID: 1435628238893996, guid: ec263dbdd3787064e94a56494f3c652e, type: 2}
+  - {fileID: 1564203164833592, guid: c981aa253210f4547ae35fd7e0acfc5e, type: 2}
+  - {fileID: 1564203164833592, guid: c981aa253210f4547ae35fd7e0acfc5e, type: 2}
   rows: 20
   columns: 20
   edgePadding: 0.1
@@ -1810,7 +1814,7 @@ GameObject:
   - component: {fileID: 1915547257}
   m_Layer: 0
   m_Name: ScoreParticle
-  m_TagString: Untagged
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1920,7 +1924,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 895208339
+  randomSeed: 171127646
   InitialModule:
     serializedVersion: 3
     enabled: 1
