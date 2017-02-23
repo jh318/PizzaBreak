@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour {
 
 	public BrickController brickPrefab;
 	public GameObject powerUp;
-	public ParticleSystem lifeParticle;
 	public ParticleSystem scoreParticle;
+	public ParticleSystem deathParticle;
 	public GameObject[] powerUpList;
 	public string nextLevel;
 
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour {
 	public AudioClip loseSfx;
 	public AudioClip lifeLostSfx;
 	//public AudioClip gameMusic;
+
+
 
 	private bool playerWins = false;
 	private bool playerLost = false;
@@ -93,11 +95,12 @@ public class GameManager : MonoBehaviour {
 			instance.sound.clip = instance.loseSfx;
 			instance.sound.Play ();
 		} else {
+			//ParticleSystem death = instance.lifeParticle;
 			instance.sound.clip = instance.lifeLostSfx;
 			instance.sound.Play ();
 			instance.livesText.text = "Lives: " + instance.lives;
-			ParticleSystem death = instance.lifeParticle;
-			death.Play();
+			instance.deathParticle.Play();
+
 		}
 	}
 
@@ -143,7 +146,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void DropPowerUp(){
-		GameObject powerP = Instantiate (powerUpList[Random.Range(0,3)]);
+		GameObject powerP = Instantiate (powerUpList[Random.Range(0,4)]);
 		powerP.transform.position = GameObject.FindGameObjectWithTag ("Ball").transform.position;
 	}
 }

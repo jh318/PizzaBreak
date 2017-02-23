@@ -9,6 +9,8 @@ public class PaddleController : MonoBehaviour {
 	public float tilt = 3;
 
 	new Renderer renderer;
+	public AudioSource sound;
+	public AudioClip BigPaddleSFX;
 
 	void Awake(){
 		if (instance == null) {
@@ -53,6 +55,12 @@ public class PaddleController : MonoBehaviour {
 				PaddleController.instance.speed = 5;
 				Destroy (pc.gameObject);
 				break;
+			case PowerupController.PowerupType.BigPaddle:
+				PaddleController.instance.transform.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
+				sound.clip = BigPaddleSFX;
+				sound.Play ();
+				Destroy (pc.gameObject);
+				break;
 			default:
 				Debug.LogWarning ("DEFAULT");
 				GameManager.instance.lives++;
@@ -60,23 +68,6 @@ public class PaddleController : MonoBehaviour {
 				break;
 			}
 		}
-
-		/**
-		if (c.transform.parent.gameObject.tag == "PowerUp") {
-			Debug.Log ("You Powered up!!!!!!!!!!!!!!!!!!");
-			GameManager.instance.lives++;
-			GameManager.instance.livesText.text = "Lives: " + GameManager.instance.lives;  
-
-		} else if (c.transform.parent.gameObject.tag == "PowerUpSpeedBall") {
-			Debug.Log ("SPEEEEEEED");
-			PaddleController.instance.speed = 20;
-
-
-		} else if (c.transform.parent.gameObject.tag == "PowerUpSlowBall") {
-			Debug.Log ("SLOOOOOOOOW");
-			PaddleController.instance.speed = 1;
-		}
-		**/
 	}
 
 		

@@ -7,7 +7,8 @@ public class PowerupController : MonoBehaviour {
 	public enum PowerupType {
 		SpeedBall,
 		SlowBall,
-		ExtraLife
+		ExtraLife,
+		BigPaddle
 	}
 
 	public PowerupType powerupType = PowerupType.ExtraLife;
