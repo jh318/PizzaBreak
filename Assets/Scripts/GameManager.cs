@@ -51,9 +51,6 @@ public class GameManager : MonoBehaviour {
 		else {
 			Destroy (gameObject);
 		}
-
-		Debug.Log ("My score: " + score);
-		Debug.Log ("Manager score: " + instance.score);
 	}
 
 	void Start (){

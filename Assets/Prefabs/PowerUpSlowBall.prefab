@@ -19,8 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4302616392046226}
-  - component: {fileID: 135382040895084052}
-  - component: {fileID: 54000808984170854}
   - component: {fileID: 212896586932004234}
   m_Layer: 0
   m_Name: PowerUpSlowBallBody
@@ -37,6 +35,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4394446216407748}
+  - component: {fileID: 114689720512535770}
+  - component: {fileID: 135559700222745708}
+  - component: {fileID: 54061052594870768}
   m_Layer: 0
   m_Name: PowerUpSlowBall
   m_TagString: PowerUpSlowBall
@@ -71,12 +72,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54000808984170854
+--- !u!54 &54061052594870768
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755809792793464}
+  m_GameObject: {fileID: 1993548619409002}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -86,12 +87,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &135382040895084052
+--- !u!114 &114689720512535770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993548619409002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79768f914ac597746a3d93251b19e950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupType: 1
+--- !u!135 &135559700222745708
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1755809792793464}
+  m_GameObject: {fileID: 1993548619409002}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

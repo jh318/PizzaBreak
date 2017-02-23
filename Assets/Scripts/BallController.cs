@@ -65,7 +65,6 @@ public class BallController : MonoBehaviour {
 			ParticleSystem p = particlePool [i];
 			if (p.isStopped) {
 				hitParticles = p;
-				Debug.Log ("reusing from my pool");
 				break;
 			}
 		}
@@ -76,7 +75,7 @@ public class BallController : MonoBehaviour {
 		if (c.gameObject.tag == "Player") { //Collision with paddle
 			paddleParticles.transform.position = transform.position;
 			paddleParticles.Play ();
-			Debug.Log ("Hit the paddle");
+			//Debug.Log ("Hit the paddle");
 			sound.clip = paddleHitSfx;
 			sound.Play();
 		} 
@@ -84,7 +83,7 @@ public class BallController : MonoBehaviour {
 			hitParticles.transform.position = transform.position;
 			hitParticles.transform.up = body.velocity;
 			hitParticles.Play ();
-			Debug.Log ("Hit a brick");
+			//Debug.Log ("Hit a brick");
 			sound.clip = brickHitSfx;
 			sound.Play();
 		}
@@ -92,7 +91,7 @@ public class BallController : MonoBehaviour {
 			hitParticles.transform.position = transform.position;
 			hitParticles.transform.up = body.velocity;
 			hitParticles.Play ();
-			Debug.Log ("Hit the wall");
+			//Debug.Log ("Hit the wall");
 			sound.clip = wallHitSfx;
 			sound.Play();
 		}

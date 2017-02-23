@@ -8,7 +8,7 @@ public class PaddleController : MonoBehaviour {
 	public float speed = 2.0f;
 	public float tilt = 3;
 
-	Renderer renderer;
+	new Renderer renderer;
 
 	void Awake(){
 		if (instance == null) {
@@ -35,6 +35,29 @@ public class PaddleController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider c){
+		PowerupController pc = c.gameObject.GetComponent<PowerupController> ();
+		if (pc != null) {
+			switch (pc.powerupType) {
+			case PowerupController.PowerupType.ExtraLife:
+				Debug.Log ("You Powered up!!!!!!!!!!!!!!!!!!");
+				GameManager.instance.lives++;
+				break;
+			case PowerupController.PowerupType.SpeedBall:
+				Debug.Log ("SPEEEEEEED");
+				PaddleController.instance.speed = 20;
+				break;
+			case PowerupController.PowerupType.SlowBall:
+				Debug.Log ("SLOOOOOOOOW");
+				PaddleController.instance.speed = 1;
+				break;
+			default:
+				Debug.LogWarning ("DEFAULT");
+				GameManager.instance.lives++;
+				break;
+			}
+		}
+
+		/**
 		if (c.transform.parent.gameObject.tag == "PowerUp") {
 			Debug.Log ("You Powered up!!!!!!!!!!!!!!!!!!");
 			GameManager.instance.lives++;
@@ -49,8 +72,8 @@ public class PaddleController : MonoBehaviour {
 			Debug.Log ("SLOOOOOOOOW");
 			PaddleController.instance.speed = 1;
 		}
+		**/
 	}
-			
 
 		
 }
