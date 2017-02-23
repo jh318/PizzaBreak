@@ -41,18 +41,22 @@ public class PaddleController : MonoBehaviour {
 			case PowerupController.PowerupType.ExtraLife:
 				Debug.Log ("You Powered up!!!!!!!!!!!!!!!!!!");
 				GameManager.instance.lives++;
+				Destroy (pc.gameObject);
 				break;
 			case PowerupController.PowerupType.SpeedBall:
 				Debug.Log ("SPEEEEEEED");
-				PaddleController.instance.speed = 20;
+				PaddleController.instance.speed = 15;
+				Destroy (pc.gameObject);
 				break;
 			case PowerupController.PowerupType.SlowBall:
 				Debug.Log ("SLOOOOOOOOW");
-				PaddleController.instance.speed = 1;
+				PaddleController.instance.speed = 5;
+				Destroy (pc.gameObject);
 				break;
 			default:
 				Debug.LogWarning ("DEFAULT");
 				GameManager.instance.lives++;
+				Destroy (pc.gameObject);
 				break;
 			}
 		}
