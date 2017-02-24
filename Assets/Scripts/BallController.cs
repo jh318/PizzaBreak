@@ -15,6 +15,8 @@ public class BallController : MonoBehaviour {
 	public AudioClip brickHitSfx;
 	public AudioClip wallHitSfx;
 
+	private int pizzaHitCount = 8;
+
 	void Start () {
 		sound = GetComponent<AudioSource> ();
 		body = GetComponent<Rigidbody> ();
@@ -25,6 +27,10 @@ public class BallController : MonoBehaviour {
 		body.velocity = Vector3.zero;
 		transform.SetParent(PaddleController.instance.transform);
 		transform.localPosition = Vector3.up;
+		for (int i = 0; i < transform.childCount; i++) {
+			transform.GetChild (i).gameObject.SetActive (true);
+			pizzaHitCount = 8;
+		}
 	}
 
 	void Launch () {
@@ -56,7 +62,6 @@ public class BallController : MonoBehaviour {
 		CameraShake ();
 		CollisionParticlePlayer (c);
 		SoundPlayer ();
-
 	}
 
 	void CollisionParticlePlayer(Collision c){
@@ -120,6 +125,15 @@ public class BallController : MonoBehaviour {
 		sound.volume = Random.Range (0.8f, 1f);
 		sound.Play ();
 	}
+
+	void RestorePizza(){
+		if (transform.childCount == 0) {
+			
+		}
+	}
+
+	public int GetPizzaHitCount(){ return pizzaHitCount; }
+	public void SetPizzaHitCount(int hitCount){ pizzaHitCount += hitCount;}
 }
 
 	
