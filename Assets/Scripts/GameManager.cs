@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
 	public string nextLevel;
 
 
-
+	 
 	public int rows = 5;
 	public int columns = 10;
 	[Range(0,1)] public float edgePadding = 0.1f;

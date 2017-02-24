@@ -17,10 +17,25 @@ public class BallController : MonoBehaviour {
 
 	private int pizzaHitCount = 8;
 
+	public int GetPizzaHitCount(){ return pizzaHitCount; }
+	public void SubtractPizzaHitCount(){ pizzaHitCount--;}
+
 	void Start () {
 		sound = GetComponent<AudioSource> ();
 		body = GetComponent<Rigidbody> ();
 		PreLaunch ();
+	}
+		
+	void Update () {
+		if (Input.GetButton("Jump") && transform.parent != null){Launch ();}
+		RestorePizza ();
+		DeathCheck ();
+	}
+		
+	void OnCollisionEnter(Collision c){
+		CameraShake ();
+		CollisionParticlePlayer (c);
+		SoundPlayer ();
 	}
 
 	void PreLaunch(){
@@ -36,32 +51,6 @@ public class BallController : MonoBehaviour {
 	void Launch () {
 		transform.SetParent (null);
 		body.velocity = Vector3.up * speed;
-	}
-	
-	void Update () {
-		if(transform.parent == null){
-			Vector3 v = body.velocity;
-			if (Mathf.Abs (v.x) > Mathf.Abs (v.y)) {
-				v.x *= 0.9f;
-			}
-			v = v.normalized * speed;
-			body.velocity = v;
-			transform.up = v; //procedural ball thing
-			transform.localScale = new Vector3(0.9f,1.1f,1f);
-			DeathCheck ();
-		}
-		else{
-			transform.localScale = Vector3.one;
-			if (Input.GetButton("Jump")){
-				Launch ();
-			}
-		}
-	}
-		
-	void OnCollisionEnter(Collision c){
-		CameraShake ();
-		CollisionParticlePlayer (c);
-		SoundPlayer ();
 	}
 
 	void CollisionParticlePlayer(Collision c){
@@ -111,7 +100,7 @@ public class BallController : MonoBehaviour {
 			} else {
 				gameObject.SetActive (false);
 			}
-			PreLaunch ();
+			Launch ();
 		}
 	}
 
@@ -127,13 +116,26 @@ public class BallController : MonoBehaviour {
 	}
 
 	void RestorePizza(){
-		if (transform.childCount == 0) {
-			
+		if (pizzaHitCount == 0) {
+			PreLaunch ();		
 		}
 	}
 
-	public int GetPizzaHitCount(){ return pizzaHitCount; }
-	public void SetPizzaHitCount(int hitCount){ pizzaHitCount += hitCount;}
+	void LegacyBounceMathStuff(){ //Use to do goofy bouncy stuff????
+		/**if(transform.parent == null){
+			Vector3 v = body.velocity;
+			if (Mathf.Abs (v.x) > Mathf.Abs (v.y)) {
+				v.x *= 0.9f;
+			}
+			v = v.normalized * speed;
+			body.velocity = v;
+			transform.up = v; //procedural ball thing
+			transform.localScale = new Vector3(0.9f,1.1f,1f);
+			DeathCheck ();
+		}**/
+		//else{
+		//	transform.localScale = Vector3.one;
+	}
 }
 
 	

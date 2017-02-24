@@ -10,7 +10,7 @@ public class BrickController : MonoBehaviour {
 		gameObject.SetActive (false);
 		GameManager.BrickBroken (points);
 		collision.collider.gameObject.SetActive (false);
-		collision.gameObject.GetComponent<BallController> ().SetPizzaHitCount (-1);
-
+		BallController ballController = collision.gameObject.GetComponent<BallController> ();
+		if (ballController) { ballController.SubtractPizzaHitCount (); }
 	}
 }
