@@ -10,7 +10,11 @@ public class PaddleController : MonoBehaviour {
 
 	new Renderer renderer;
 	public AudioSource sound;
-	public AudioClip BigPaddleSFX;
+	//public AudioClip[] powerUpSFXs;
+	public AudioClip extraLargeSFX;
+	public AudioClip extraCheeseSFX;
+	public AudioClip anchoviesSFX;
+	public AudioClip peppersSFX;
 
 	void Awake(){
 		if (instance == null) {
@@ -44,20 +48,26 @@ public class PaddleController : MonoBehaviour {
 				Debug.Log ("You Powered up!!!!!!!!!!!!!!!!!!");
 				GameManager.instance.lives++;
 				Destroy (pc.gameObject);
+				sound.clip = extraCheeseSFX;
+				sound.Play ();
 				break;
 			case PowerupController.PowerupType.SpeedBall:
 				Debug.Log ("SPEEEEEEED");
 				PaddleController.instance.speed = 15;
 				Destroy (pc.gameObject);
+				sound.clip = peppersSFX;
+				sound.Play ();
 				break;
 			case PowerupController.PowerupType.SlowBall:
 				Debug.Log ("SLOOOOOOOOW");
 				PaddleController.instance.speed = 5;
 				Destroy (pc.gameObject);
+				sound.clip = anchoviesSFX;
+				sound.Play ();
 				break;
 			case PowerupController.PowerupType.BigPaddle:
 				PaddleController.instance.transform.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
-				sound.clip = BigPaddleSFX;
+				sound.clip = extraLargeSFX;
 				sound.Play ();
 				Destroy (pc.gameObject);
 				break;
