@@ -226,12 +226,12 @@ Prefab:
     - target: {fileID: 65577166118417518, guid: aa97249a42c7eea41a05126e22841536,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.9452243
+      value: 0.9167192
       objectReference: {fileID: 0}
     - target: {fileID: 65577166118417518, guid: aa97249a42c7eea41a05126e22841536,
         type: 2}
       propertyPath: m_Center.x
-      value: -0.0034235716
+      value: -0.017676156
       objectReference: {fileID: 0}
     - target: {fileID: 114742780959815084, guid: aa97249a42c7eea41a05126e22841536,
         type: 2}
@@ -1872,7 +1872,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 042aaa291b66ae046b364616bb5e3a54, type: 2}
+  - {fileID: 2100000, guid: 25ec6dce326ac5c4b8a91031bc08bd7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1947,13 +1947,13 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1700737435}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 042aaa291b66ae046b364616bb5e3a54, type: 2}
+  - {fileID: 2100000, guid: 25ec6dce326ac5c4b8a91031bc08bd7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
