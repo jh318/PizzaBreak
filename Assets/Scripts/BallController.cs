@@ -117,7 +117,7 @@ public class BallController : MonoBehaviour {
 	}
 
 	void RestorePizza(){
-		if (pizzaHitCount == 0) {
+		if (pizzaHitCount <= 0) {
 			PreLaunch ();
 			Launch ();
 		}

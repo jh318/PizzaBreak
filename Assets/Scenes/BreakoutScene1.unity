@@ -890,8 +890,8 @@ MonoBehaviour:
   - {fileID: 1564203164833592, guid: c981aa253210f4547ae35fd7e0acfc5e, type: 2}
   - {fileID: 1653196734588492, guid: a1a0e813fd924284d8897cde7af57228, type: 2}
   nextLevel: BreakoutScene2
-  rows: 4
-  columns: 4
+  rows: 3
+  columns: 3
   edgePadding: 0.1
   bottomPadding: 0.5
   livesText: {fileID: 554483451}
@@ -899,7 +899,7 @@ MonoBehaviour:
   highScoreText: {fileID: 1349546432}
   gameOverText: {fileID: 777532342}
   winStateText: {fileID: 0}
-  lives: 2
+  lives: 99
   score: 0
   highScore: 30
   brickCount: 0

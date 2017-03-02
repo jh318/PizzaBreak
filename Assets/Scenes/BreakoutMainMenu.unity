@@ -384,6 +384,8 @@ GameObject:
   - component: {fileID: 1048732088}
   - component: {fileID: 1048732087}
   - component: {fileID: 1048732091}
+  - component: {fileID: 1048732093}
+  - component: {fileID: 1048732092}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -478,6 +480,106 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23236cd33d4847f4680704e9b691ed12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1048732092
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1048732086}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &1048732093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1048732086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c458f106200714f8bd9493ae3e23c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: da3d203a57a022649b5518e5c76c1845, type: 3}
+  - {fileID: 8300000, guid: 5ae2fa64913d15a4cb9d1d295add3130, type: 3}
+  - {fileID: 8300000, guid: feb54909fdc450a439da52ecff7183c2, type: 3}
+  - {fileID: 8300000, guid: dad13264b88cf6044b7ec513eff42e54, type: 3}
+  - {fileID: 8300000, guid: f890482b49adf0a48a9fdc0a4743c113, type: 3}
+  - {fileID: 8300000, guid: 632870debd1e6514ba2da497bd560f26, type: 3}
+  - {fileID: 8300000, guid: bbe91257ce4f83543b3ac2f9c4c936d7, type: 3}
+  sound: {fileID: 1048732092}
 --- !u!1 &1123126429
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +703,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
