@@ -9,6 +9,8 @@ public class PaddleController : MonoBehaviour {
 	public float tilt = 3;
 
 	new Renderer renderer;
+	public BoxCollider box;
+	public Transform paddleSize;
 	public AudioSource sound;
 	//public AudioClip[] powerUpSFXs;
 	public AudioClip extraLargeSFX;
@@ -29,8 +31,8 @@ public class PaddleController : MonoBehaviour {
 		float playerInputX = Input.GetAxis ("Horizontal") * speed * Time.deltaTime; 
 		transform.position = transform.position + new Vector3(playerInputX, 0, 0); // current position + Vector3.right * playerInputX
 		transform.localEulerAngles = Vector3.back * tilt * playerInputX;
-		ClampToScreen (renderer.bounds.extents.x);
-		ClampToScreen (-renderer.bounds.extents.x);
+		ClampToScreen (box.bounds.extents.x);
+		ClampToScreen (-box.bounds.extents.x);
 
 	}
 
@@ -66,7 +68,8 @@ public class PaddleController : MonoBehaviour {
 				sound.Play ();
 				break;
 			case PowerupController.PowerupType.BigPaddle:
-				PaddleController.instance.transform.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
+				//PaddleController.instance.transform.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
+				paddleSize.localScale = new Vector3 (10.0f, 1.0f, 1.0f);
 				sound.clip = extraLargeSFX;
 				sound.Play ();
 				Destroy (pc.gameObject);
@@ -84,7 +87,8 @@ public class PaddleController : MonoBehaviour {
 	IEnumerator ResetPaddleSize(){
 		yield return new WaitForSeconds (3);
 
-		gameObject.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
+		//gameObject.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
+		paddleSize.localScale = new Vector3 (3.0f, 1.0f, 1.0f);
 		Debug.Log ("Reset");
 
 	}

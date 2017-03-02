@@ -8,7 +8,7 @@ public class BrickController : MonoBehaviour {
 
 	void OnCollisionExit(Collision collision){
 		gameObject.SetActive (false);
-		GameManager.BrickBroken (points);
+		GameManager.instance.BrickBroken (points);
 		collision.collider.gameObject.SetActive (false);
 		BallController ballController = collision.gameObject.GetComponent<BallController> ();
 		if (ballController) { ballController.SubtractPizzaHitCount (); }

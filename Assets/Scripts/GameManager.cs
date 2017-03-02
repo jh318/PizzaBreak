@@ -62,9 +62,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update(){
-		if (playerWins == true) {
+		/**if (playerWins == true) {
 			if (Input.GetKeyDown (KeyCode.Space)) {SceneManager.LoadScene (nextLevel);}
-		}
+		}*/
 		if (playerLost == true) {
 			if (Input.GetKeyDown (KeyCode.Space)) {SceneManager.LoadScene ("BreakoutMainMenu");}
 		}
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public static void BrickBroken (int points){
+	public void BrickBroken (int points){
 		instance.score += points;
 		ParticleSystem p = instance.scoreParticle;
 		p.Play ();
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	public static void AllBricksBroken() {
+	public void AllBricksBroken() {
 		bool hasWon = true;
 		for (int i = 0; i < instance.brickList.Count; i++) {
 			BrickController brick = instance.brickList [i];
@@ -131,8 +131,10 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		if (hasWon) {
-			instance.gameOverText.text = "You Win!";
+			nextBrickSet ();
+			instance.gameOverText.text = "Sweep the Kitchen!";
 			instance.gameOverText.gameObject.SetActive (true);
+			StartCoroutine(RemoveWinText());
 			instance.playerWins = true;
 			instance.sound.clip = instance.winSfx;
 			instance.sound.Play ();
@@ -148,5 +150,17 @@ public class GameManager : MonoBehaviour {
 	void DropPowerUp(){
 		GameObject powerP = Instantiate (powerUpList[Random.Range(0,4)]);
 		powerP.transform.position = GameObject.FindGameObjectWithTag ("Ball").transform.position;
+	}
+
+	void nextBrickSet(){
+		rows++;
+		columns++;
+		CreateBricks ();
+	}
+
+	IEnumerator RemoveWinText(){
+		yield return new WaitForSeconds (2);
+		instance.gameOverText.gameObject.SetActive (false);
+
 	}
 }
