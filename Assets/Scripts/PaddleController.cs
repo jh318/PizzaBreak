@@ -70,6 +70,7 @@ public class PaddleController : MonoBehaviour {
 				sound.clip = extraLargeSFX;
 				sound.Play ();
 				Destroy (pc.gameObject);
+				StartCoroutine (ResetPaddleSize());
 				break;
 			default:
 				Debug.LogWarning ("DEFAULT");
@@ -80,5 +81,12 @@ public class PaddleController : MonoBehaviour {
 		}
 	}
 
+	IEnumerator ResetPaddleSize(){
+		yield return new WaitForSeconds (3);
+
+		gameObject.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
+		Debug.Log ("Reset");
+
+	}
 		
 }

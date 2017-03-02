@@ -27,6 +27,7 @@ public class BallController : MonoBehaviour {
 	}
 		
 	void Update () {
+		maintainSpeed ();
 		if (Input.GetButton("Jump") && transform.parent != null){Launch ();}
 		RestorePizza ();
 		DeathCheck ();
@@ -117,7 +118,17 @@ public class BallController : MonoBehaviour {
 
 	void RestorePizza(){
 		if (pizzaHitCount == 0) {
-			PreLaunch ();		
+			PreLaunch ();
+			Launch ();
+		}
+	}
+
+	void maintainSpeed(){
+		if (transform.parent == null) {
+			Vector3 v = body.velocity;
+			v = v.normalized;
+			v *= speed;
+			body.velocity = v;
 		}
 	}
 
