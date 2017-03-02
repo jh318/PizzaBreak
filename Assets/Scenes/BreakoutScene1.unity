@@ -899,13 +899,13 @@ MonoBehaviour:
   highScoreText: {fileID: 1349546432}
   gameOverText: {fileID: 777532342}
   winStateText: {fileID: 0}
-  lives: 99
+  lives: 2
   score: 0
   highScore: 30
   brickCount: 0
   sound: {fileID: 0}
   winSfx: {fileID: 8300000, guid: 383037c4b8fc7a54790aefdc532e6aa4, type: 3}
-  loseSfx: {fileID: 8300000, guid: bafadb45b6c080f4a8b0b321b568ffdf, type: 3}
+  loseSfx: {fileID: 8300000, guid: 4c2ea6ef1a4ce13498b7c16ffe861d38, type: 3}
   lifeLostSfx: {fileID: 8300000, guid: 511562ba39ee9b94a835d2a3d0384d8c, type: 3}
 --- !u!4 &748809840
 Transform:
@@ -1748,7 +1748,7 @@ Prefab:
     - target: {fileID: 54620455369709892, guid: 2558753f756e0264ba72e7fb4bfaf32b,
         type: 2}
       propertyPath: m_Constraints
-      value: 8
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 114802579520519066, guid: 2558753f756e0264ba72e7fb4bfaf32b,
         type: 2}

@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour {
 			instance.gameOverText.text = "Sweep the Kitchen!";
 			instance.gameOverText.gameObject.SetActive (true);
 			StartCoroutine(RemoveWinText());
-			instance.playerWins = true;
+			//instance.playerWins = true;
 			instance.sound.clip = instance.winSfx;
 			instance.sound.Play ();
 		}
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator RemoveWinText(){
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (1);
 		instance.gameOverText.gameObject.SetActive (false);
 
 	}
